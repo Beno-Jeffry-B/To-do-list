@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+
+    <style>
+
+        .main-container{
+            border:2px solid black;
+            text-align: center;
+            padding: 5%;
+            width: 60%;
+            margin: 10% auto;
+            
+        }
+
+
+        
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h2>Simple To-Do list</h2>
+        <input type="text" id="input_box">
+        <button type="submit" id="submit_btn" onclick="submit()">Submit</button>
+        <button type="submit" id="clear_all"  onclick="clear_all()">clear_all</button>
+        <div id="todo_list"></div>
+    </div>
+   
+    
+</body>
+
+<script>
+
+    
+    function submit(){
+        input = document.getElementById("input_box").value;
+         if (input.trim() == ""){
+            alert("enter task");
+         }
+
+        const taskDiv = document.createElement("div");
+
+        taskDiv.style.border = "1px solid black";
+        taskDiv.style.padding = "10px";
+        taskDiv.style.margin = "10px auto";
+        taskDiv.style.width = "60%";
+        taskDiv.style.display = "flex";
+        taskDiv.style.alignItems = "center";
+        taskDiv.style.justifyContent ="space-around";
+        taskDiv.style.height = "10px"
+
+        const taskText = document.createElement("p");
+        taskText.textContent = input;
+
+        const delete_btn = document.createElement("button");
+        delete_btn.textContent = "X";
+
+        delete_btn.onclick = function(){
+            taskDiv.remove();
+        };
+
+
+
+        taskDiv.appendChild(taskText);
+        taskDiv.appendChild(delete_btn);
+    
+        document.getElementById("todo_list").appendChild(taskDiv);
+    }
+
+function clear_all(){
+     document.getElementById("todo_list").textContent = "";
+}
+
+
+
+
+</script>
+</html>
